@@ -18,7 +18,6 @@
 
 [[ $EUID -ne 0 ]] && 'Please run the bootstrap script as root' && exit 1
 
-dhclient
 yum update -y
 yum groupinstall -y 'Development Tools' 
 

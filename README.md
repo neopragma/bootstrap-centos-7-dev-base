@@ -30,7 +30,15 @@ Note: On most of these setups, the standard user is 'dev'. That name is reserved
 
 This will install enough software on the instance to enable it to be used as a template for building software development environments tailored to different programming languages and development/testing tools. 
 
-### 2.1. Install git.
+### 2.1. Start networking.
+
+CentOS minimal ships with networking turne off. Turn it on.
+
+```shell 
+dhclient
+```
+
+### 2.2. Install git.
 
 The provisioning scripts are on Github. The instance needs git support to clone the repository and complete the configuration. 
 
@@ -38,7 +46,7 @@ The provisioning scripts are on Github. The instance needs git support to clone 
 yum -y install git 
 ``` 
 
-### 2.2. Clone the repository.
+### 2.3. Clone the repository.
 
 Log on as root.
 
@@ -48,7 +56,7 @@ Clone the repository for building a template instance from CentOS 7:
 git clone git://github.com/neopragma/bootstrap-centos-7-dev-base
 ``` 
 
-### 2.3. (Optional) Review default configuration and modify as desired.
+### 2.4. (Optional) Review default configuration and modify as desired.
 
 If you want your template to be configured differently than the default, make the necessary changes to bash scripts, Chef recipes, and configuration files. 
 
@@ -88,7 +96,7 @@ bootstrap-ubuntu-server-16.04-base/
                            => /dev/.config/openbox/
 ```
 
-### 2.4. Run the bootstrap script.
+### 2.5. Run the bootstrap script.
 
 If all goes well, this will provision the instance as a base or template for building development environments. Check the results carefully in case of errors. There are many steps and anything can happen despite care in preparing the script. 
 
