@@ -32,7 +32,7 @@ This will install enough software on the instance to enable it to be used as a t
 
 ### 2.1. Start networking.
 
-CentOS minimal ships with networking turne off. Turn it on. Log on as root.
+CentOS minimal ships with networking turned off. Turn it on. Log on as root.
 
 ```shell 
 dhclient
