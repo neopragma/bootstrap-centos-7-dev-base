@@ -9,6 +9,13 @@ package 'openbox'
 package 'rxvt-unicode-256color'
 package 'urw-fonts'
 
+bash 'copy openbox configuration files to user root' do 
+  code <<-EOF
+    mkdir -p /root/.config/openbox 
+    cp -r /root/bootstrap-centos-7-dev-base/openbox/* /root/.confit/openbox/.
+    EOF 
+end 
+
 bash 'copy openbox configuration files to user developer' do 
   code <<-EOF
     mkdir -p /home/developer/.config/openbox
