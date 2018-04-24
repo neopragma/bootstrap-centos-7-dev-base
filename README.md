@@ -35,7 +35,7 @@ This will install enough software on the instance to enable it to be used as a t
 The provisioning scripts are on Github. The instance needs git support to clone the repository and complete the configuration. 
 
 ```shell 
-sudo apt install -y git 
+yum -y install git 
 ``` 
 
 ### 2.2. Clone the repository.
