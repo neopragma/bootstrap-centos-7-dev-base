@@ -38,7 +38,6 @@ printf "Installing Chef DK.\n"
 curl https://omnitruck.chef.io/install.sh | bash -s -- -P chefdk -c stable -v 2.0.28
 
 printf "Copying files from distribution directories to target directories.\n"
-cd bootstrap-centos-7-dev-base
 cp ./scripts/* /usr/local/bin
 mkdir -p /root/chef-repo/cookbooks/centos_prep/spec/unit/recipes
 mkdir -p /root/chef-repo/cookbooks/centos_prep/recipes

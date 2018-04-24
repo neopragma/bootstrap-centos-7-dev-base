@@ -5,15 +5,22 @@ apt_repository 'neovim-ppa' do
 end 
 
 package 'python-pip'
-package 'python3-pip'
+package 'python34-setuptools'
+
+bash 'install python3-pip' do 
+  code <<-EOF 
+    easy_install-3.4 pip 
+    EOF 
+end 
+
 package 'neovim'
 
-execute 'add python support to neovim' do
-  command "$(pip2 install --user neovim)"
-end
-
-execute 'add python3 support to neovim' do
-  command "$(pip3 install --user neovim)"
+bash 'add python support to neovim' do
+  code <<-EOF
+    pip2 install --upgrade pip 
+    pip2 install --user neovim
+    pip3 install --user neovim 
+    EOF
 end
 
 directory 'root nvim autoload directory' do 
@@ -110,12 +117,12 @@ bash 'copy neovim configuration files and set ownership' do
     cp /root/bootstrap-centos-7-dev-base/neovim/init.vim /root/.config/nvim/. 
     mkdir -p /home/developer/.config/nvim 
     cp -r /root/.config/nvim/* /home/developer/.config/nvim/.
-    chown -R dev /home/developer
-    chgrp -R dev /home/developer
-    chown -R dev /home/developer/.config 
-    chgrp -R dev /home/developer/.config
-    chown -R dev /home/developer/.config/nvim 
-    chgrp -R dev /home/developer/.config/nvim
+    chown -R developer /home/developer
+    chgrp -R developer /home/developer
+    chown -R developer /home/developer/.config 
+    chgrp -R developer /home/developer/.config
+    chown -R developer /home/developer/.config/nvim 
+    chgrp -R developer /home/developer/.config/nvim
     EOF
 end
 

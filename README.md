@@ -102,7 +102,7 @@ If all goes well, this will provision the instance as a base or template for bui
 
 ```shell 
 cd /root/bootstrap-centos-7-dev-base
-./bootstrap 
+./bootstrap
 ``` 
 
 ### 3. Manual configuration of NeoVim.
