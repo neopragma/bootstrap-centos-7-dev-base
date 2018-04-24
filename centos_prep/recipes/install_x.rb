@@ -8,7 +8,7 @@ package 'urw-fonts'
 bash 'copy openbox configuration files to user root' do 
   code <<-EOF
     mkdir -p /root/.config/openbox 
-    cp -r /root/bootstrap-centos-7-dev-base/openbox/* /root/.confit/openbox/.
+    cp -r /root/bootstrap-centos-7-dev-base/openbox/* /root/.config/openbox/.
     EOF 
 end 
 
