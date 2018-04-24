@@ -1,9 +1,5 @@
 # Install X Windows client and server and openbox window manager.
 
-execute 'install x window support' do
-  command "$(yum groupinstall -y 'X Window System')"
-end
-
 package 'epel-release'
 package 'openbox'
 package 'rxvt-unicode-256color'
