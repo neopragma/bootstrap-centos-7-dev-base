@@ -60,15 +60,10 @@ git clone git://github.com/neopragma/bootstrap-centos-7-dev-base
 
 If you want your template to be configured differently than the default, make the necessary changes to bash scripts, Chef recipes, and configuration files. 
 
-In particular, look at:
-
-- ubuntu_prep/recipes/install_neovim.rb - the ```pip2 --install``` command will probably not work if you are running this with ssh. When testing, I had to run it while logged into the target instance as root. Even if run locally, people have reported problems with it on Ubuntu 16.04. 
-- openbox/autostart - this contains xrandr commands corresponding to the monitor I used when testing the script. There were problems with Ubuntu 16.04 getting Xorg configuration to work as documented. Including xrandr settings in the autostart file is a brute-force workaround. You might want to try configuring X the usual way on your instance, and it might work. 
-
 The directory structure of the provisioning repository looks like this:
 
 ```
-bootstrap-ubuntu-server-16.04-base/
+bootstrap-centos-7-dev-base/
     bootstrap              Bash script to prepare the instance to run Chef
                            and kick off the Chef cookbook that completes
                            the provisioning.
@@ -80,13 +75,13 @@ bootstrap-ubuntu-server-16.04-base/
         recipes            List the available Chef recipes for provisioning
         runchefspec        Run `bundle exec rake` to run rspec on Chef recipes
 
-    ubuntu_prep/           ```bootstrap``` copies these files to prepare Chef
-        Gemfile            => /root/chef-repo/cookbooks/ubuntu_prep/
-        Rakefile           => /root/chef-repo/cookbooks/ubuntu_prep/
-        recipes/           => /root/chef-repo/cookbooks/ubuntu_prep/
+    centos_prep/           ```bootstrap``` copies these files to prepare Chef
+        Gemfile            => /root/chef-repo/cookbooks/centos_prep/
+        Rakefile           => /root/chef-repo/cookbooks/centos_prep/
+        recipes/           => /root/chef-repo/cookbooks/centos_prep/
         spec/
-            spec_helper.rb => /root/chef-repo/cookbooks/ubuntu_prep/spec
-            unit/recipes/  => /root/chef-repo/cookbooks/ubuntu_prep/spec/unit/recipes
+            spec_helper.rb => /root/chef-repo/cookbooks/centos_prep/spec
+            unit/recipes/  => /root/chef-repo/cookbooks/centos_prep/spec/unit/recipes
 
     neovim/                Chef recipe ```install_neovim``` performs these copies.
                            => /root/.config/nvim/
