@@ -6,22 +6,7 @@ end
 
 package 'python-pip'
 package 'python34-setuptools'
-
-#bash 'install python3-pip' do 
-#  code <<-EOF 
-#    easy_install-3.4 pip 
-#    EOF 
-#end 
-
 package 'neovim'
-
-#bash 'add python support to neovim' do
-#  code <<-EOF
-#    pip2 install --upgrade pip 
-#    pip2 install --user neovim
-#    pip3 install --user neovim 
-#    EOF
-#end
 
 directory 'root nvim autoload directory' do 
   path '/root/.config/nvim/autoload' 

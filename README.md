@@ -105,21 +105,57 @@ cd /root/bootstrap-centos-7-dev-base
 ./bootstrap
 ``` 
 
-### 3. Manual configuration of NeoVim.
+### 3. Post-installation manual steps 
 
-Some steps can't be scripted. 
+#### 3.1. Chef doesn't install the X Window System 
 
-#### 3.2. Enable plugins 
+I was unable to get the X Window installation to work through Chef. Log in as root and run yum from a command line:
 
-One-time run of :UpdateRemotePlugins for certain plugins.
+```shell 
+yum -y groupinstall 'X Window System'
+```
+
+#### 3.2. Scripted install of python pip fails
+
+For unknown reasons, python pip installs did not work when executed as part of a script or a Chef recipe. Run them on the command line:
+
+```shell
+easy_install-3.4 pip 
+pip2 install --upgrade pip 
+pip2 install --user neovim 
+pip3 install --user neovim 
+```
+
+#### 3.3. Enable NeoVim plugins after installation 
+
+Enable NeoVim plugins that require the :UpdateRemotePlugins command: 
 
 - Start neovim 
 - Run the editor command :UpdateRemotePlugins
 - Quit neovim
 
+#### 3.4. Optionally create aliases 
+
+CentOS does not have an ```editor``` symlink like Debian-based distros have. You can add an alias at the end of ```.bashrc```:
+
+```shell 
+alias editor='nvim' 
+``` 
+
+#### 3.5. Difficulties starting openbox session 
+
+As noted under 5.1 below, I wasn't able to get this system to start an openbox session in the same way as other systems. You can add an alias at the end of ```.bashrc``` for convenience:
+
+```shell 
+alias gui='xinit /bin/openbox-session'
+```
 
 ### 4. Known issues with the bootstrap process
 
+Real solutions to these issues would be welcome:
+
+- Chef limitations for yum groupinstall, as noted above under 3.1 above. 
+- CentOS oddities with regard to python/pip installs, as noted above under 3.2 above.
 
 #### 4.1. rvm issues 
 
@@ -139,3 +175,19 @@ One user suggests deleting the irb history file at ```/usr/local/rvm/rubies/ruby
 This seems to work, but does not "feel" like a reliable solution. Be alert to potential problems.
 
 ### 5. Known issues after system comes up
+
+#### 5.1. Starting an X session 
+
+For unknown reasons, the following commands do not work on this environment for starting an openbox session:
+
+```shell 
+startx 
+xinit
+xinit openbox-session 
+``` 
+
+This is the only way I found to start the session:
+
+```shell 
+xinit /bin/openbox-session
+``` 
