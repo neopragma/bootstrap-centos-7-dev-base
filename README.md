@@ -22,7 +22,7 @@ On the "users" panel:
 
 Set the root password to 'admin'. 
 
-Dreate user 'developer' with password 'developer' and give it administrator privileges.  
+Create user 'developer' with password 'developer' and give it administrator privileges.  
 
 Note: On most of these setups, the standard user is 'dev'. That name is reserved for system use on CentOS.
 
